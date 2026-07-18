@@ -1,13 +1,24 @@
 from ollama import chat
 
-response = chat(
-    model="qwen2.5:3b",
-    messages=[
-    {
-        "role": "user",
-        "content": "Hi! How are you ?",
-    }
-    ],
-)
+print("=== AI Agent ===")
+print("Type 'exit' to quit.\n")
 
-print(response["message"]["content"])
+while True:
+    user_input  = input("You: ")
+
+    if user_input.lower() == "exit":
+        print("GoodBye")
+        break
+
+    response = chat(
+        model="qwen2.5:3b",
+        messages=[
+            {
+                "role": "user",
+                "content": user_input,
+            }
+        ],
+    )
+
+    print("\nAI:", response["message"]["content"])
+    print()
