@@ -1,5 +1,7 @@
 from ollama import chat
 
+messages = []
+
 print("=== AI Agent ===")
 print("Type 'exit' to quit.\n")
 
@@ -10,15 +12,22 @@ while True:
         print("GoodBye")
         break
 
+    messages.append({
+        "role": "user",
+        "content": user_input,
+    })
+
     response = chat(
         model="qwen2.5:3b",
-        messages=[
-            {
-                "role": "user",
-                "content": user_input,
-            }
-        ],
+        messages=messages
     )
 
-    print("\nAI:", response["message"]["content"])
+    ai_reply = response["message"]["content"]
+
+    messages.append({
+        "role": "assistant",
+        "content": ai_reply,
+    })
+
+    print("\nAI:", ai_reply)
     print()
