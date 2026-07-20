@@ -1,4 +1,5 @@
 from ollama import chat
+from tools import calculator
 
 messages = []
 
