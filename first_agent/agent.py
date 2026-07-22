@@ -35,13 +35,17 @@
 
 from tools import calculator
 
-user_input = input("Enter Calculations: ")
-part = user_input.split()
-num1 = int(part[0])
-num2 = int(part[2])
-operation = part[1]
+try:
+    user_input = input("Enter Calculations: ")
+    part = user_input.split()
+    num1 = int(part[0])
+    num2 = int(part[2])
+    operation = part[1]
 
-result = calculator(num1, num2, operation)
+    result = calculator(num1, num2, operation)
 
-print("Result:", result)
+    print("Result:", result)
+except Exception as e:
+    print("Invalid input!")
+    print(e)
 
